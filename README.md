@@ -27,6 +27,13 @@ uv pip install requirements.txt
 
 Go to [http:localhost:8080](http:localhost:8080) to see the Airflow UI. Username and password are both `airflow`.
 
+### Ingesting an example dataset
+
+1. Install the [good wiki dataset](https://huggingface.co/datasets/euirim/goodwiki) from hugging face
+2. Rename it to goodwiki.parquet and place it in the data folder. 
+3. Then on the Airflow UI located in [http:localhost:8080](http:localhost:8080), run ingest_dag so that the parquet file can be stored into minio s3 which is located in [http:localhost:9080](http:localhost:9080).
+4. You should see a bucket called warehouse which has two subfolders: raw and goodwiki. raw stores the parquet file and goodwiki stores the iceberg version.
+
 
 ## Test Text To SQL 
 
