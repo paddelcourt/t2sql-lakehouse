@@ -39,10 +39,10 @@ RUN curl -L -o /opt/spark/jars/iceberg-spark-runtime-3.3_2.12-1.4.2.jar \
 RUN echo "\
 spark.sql.extensions=org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions\n\
 spark.sql.catalog.spark_catalog=org.apache.iceberg.spark.SparkSessionCatalog\n\
-spark.sql.catalog.spark_catalog.type=hive\n\
+spark.sql.catalog.spark_catalog.type=hadoop\n\
 spark.sql.catalog.local=org.apache.iceberg.spark.SparkCatalog\n\
 spark.sql.catalog.local.type=hadoop\n\
-spark.sql.catalog.local.warehouse=/opt/spark/iceberg-warehouse\n\
+spark.sql.catalog.local.warehouse=s3a://warehouse/\n\
 spark.hadoop.hive.cli.print.header=true\n\
 " >> /opt/spark/conf/spark-defaults.conf
 
