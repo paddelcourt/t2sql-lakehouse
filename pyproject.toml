@@ -3,5 +3,5 @@ name = "t2sql-lakehouse"
 version = "0.1.0"
 description = "Text to SQL lakehouse"
 readme = "README.md"
-requires-python = ">=3.11
+requires-python = ">=3.11"
 dependencies = []
