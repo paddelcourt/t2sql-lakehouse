@@ -1,7 +1,7 @@
 # Text to SQL Lakehouse
 
 This project is a proof of concept on how text to sql can be applied for iceberg lakehouse. This project is a fork of Joseph Machado's [beginner de project](https://github.com/josephmachado/beginner_de_project)
-but with modifications to use iceberg and also for text to sql application.
+but with modifications to use iceberg and for text to sql application with [XiYan-SQL](https://github.com/XGenerationLab/XiYan-SQL)
 
 
 
@@ -27,6 +27,14 @@ uv pip install requirements.txt
 
 Go to [http:localhost:8080](http:localhost:8080) to see the Airflow UI. Username and password are both `airflow`.
 
+
+## Test Text To SQL 
+
+Follow the steps on the notebook which will:
+1. Query the Iceberg table with Duckdb connected to Minio S3
+2. Generate an [M-Schema](https://github.com/XGenerationLab/M-Schema) to be used as prompt template for Text to SQL 
+3. Inference with XGenerationLab/XiYanSQL-QwenCoder-7B-2504 model
+
 ## Architecture
 
 This data engineering project, includes the following:
@@ -38,13 +46,7 @@ This data engineering project, includes the following:
 
 For simplicity services 1-5 of the above are installed and run in one container defined [here](./containers/airflow/Dockerfile).
 
-![Data pipeline design](assets/images/arch.png)
 
-The `user_analytics_dag` DAG in the [Airflow UI](http://localhost:8080) will look like the below image:
 
-![DAG](assets/images/dag.png)
 
-On completion, you can see the dashboard html rendered at[./dags/scripts/dashboard/dashboard.html](./dags/scripts/dashboard/dashboard.html).
-
-Read **[this post](https://www.startdataengineering.com/post/data-engineering-projects-with-free-template/)**, for information on setting up CI/CD, IAC(terraform), "make" commands and automated testing.
-
+For the blog on the data engineering templates by Joseph Machado, check out **[this post](https://www.startdataengineering.com/post/data-engineering-projects-with-free-template/)**.
