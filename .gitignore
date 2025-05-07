@@ -85,3 +85,6 @@ dashboard_files/
 *.avro
 *.parquet
 *.csv
+
+t2sql/*.json
+*.wal
