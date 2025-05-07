@@ -80,3 +80,8 @@ terraform.rc
 Footer
 
 dashboard_files/
+
+
+*.avro
+*.parquet
+*.csv
