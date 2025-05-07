@@ -88,3 +88,4 @@ dashboard_files/
 
 t2sql/*.json
 *.wal
+t2sql/:memory
