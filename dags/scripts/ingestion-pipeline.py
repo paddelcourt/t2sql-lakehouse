@@ -7,7 +7,7 @@ spark = SparkSession.builder \
     .appName("Iceberg Ingestion Pipeline") \
     .config("spark.sql.catalog.local", "org.apache.iceberg.spark.SparkCatalog") \
     .config("spark.sql.catalog.local.type", "hadoop") \
-    .config("spark.sql.catalog.local.warehouse", "s3a://goodwiki-bucket/warehouse/") \
+    .config("spark.sql.catalog.local.warehouse", "s3a://warehouse/") \
     .config("spark.hadoop.fs.s3a.access.key", "minio") \
     .config("spark.hadoop.fs.s3a.secret.key", "minio123") \
     .config("spark.hadoop.fs.s3a.endpoint", "http://minio:9000") \
@@ -49,7 +49,7 @@ if __name__ == "__main__":
         "--input",
         type=str,
         help="HDFS input",
-        default="s3a://goodwiki-bucket/raw/goodwiki.parquet",
+        default="s3a://warehouse/raw/goodwiki.parquet",
     )
     args = parser.parse_args()
     ingest_schema(args.input)
