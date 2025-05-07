@@ -15,7 +15,7 @@ from airflow.providers.amazon.aws.transfers.local_to_s3 import (
 )
 from airflow.providers.amazon.aws.transfers.sql_to_s3 import SqlToS3Operator
 
-goodwiki_bucket = "goodwiki-bucket"  # Define your bucket name here
+warehouse = "warehouse"  # Define your bucket name here
 
 
 @dag(
@@ -26,14 +26,14 @@ goodwiki_bucket = "goodwiki-bucket"  # Define your bucket name here
 )
 def my_dag():
     create_s3_bucket = S3CreateBucketOperator(
-        task_id="create_s3_bucket", bucket_name=goodwiki_bucket
+        task_id="create_s3_bucket", bucket_name=warehouse
     )
 
     goodwiki_to_s3 = LocalFilesystemToS3Operator(
         task_id="goodwiki_to_s3",
         filename="/opt/airflow/data/goodwiki.parquet",
         dest_key="raw/goodwiki.parquet",
-        dest_bucket=goodwiki_bucket,
+        dest_bucket=warehouse,
         replace=True,
     )
 
