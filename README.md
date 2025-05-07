@@ -1,7 +1,9 @@
 # Text to SQL Lakehouse
 
-This project is a proof of concept on how text to sql can be applied for iceberg lakehouse. This project is a fork of Joseph Machado's [beginner de project](https://github.com/josephmachado/beginner_de_project)
-but with modifications to use iceberg and for text to sql application with [XiYan-SQL](https://github.com/XGenerationLab/XiYan-SQL)
+The goal of the project is to shwocase a proof of concept on how text to sql can be applied for iceberg lakehouse. There is a lakehouse architecture set up with Airflow, Spark and Iceberg, and then Duckdb and XiYan-SQL is used to generate the text to sql.
+
+This project is a fork of Joseph Machado's [beginner de project](https://github.com/josephmachado/beginner_de_project)
+but with modifications to use iceberg and for text to sql application with [XiYan-SQL](https://github.com/XGenerationLab/XiYan-SQL).
 
 
 
@@ -42,14 +44,29 @@ Follow the steps on the [text_to_sql_iceberg.ipynb](https://github.com/paddelcou
 2. Generate an [M-Schema](https://github.com/XGenerationLab/M-Schema) to be used as prompt template for Text to SQL 
 3. Inference with XGenerationLab/XiYanSQL-QwenCoder-7B-2504 model
 
+
+### Example of the interaction
+
+```
+Question: 
+Can you get me the description of the louvre?
+
+LLM Response: 
+SELECT description FROM goodwiki WHERE title = 'Louvre'
+
+SQL Query Result:
+'Art museum in Paris, France'
+
+```
 ## Architecture
 
 This data engineering project, includes the following:
 
 1. **`Airflow`**: To schedule and orchestrate DAGs.
 2. **`Postgres`**: To store Airflow's details (which you can see via Airflow UI) and also has a schema to represent upstream databases.
-3. **`DuckDB`**: To act as our querying engine
-4. **`Iceberg`**: To act as our storage method
+3. **`Spark`**: To ingest data and create Iceberg tables.
+4. **`DuckDB`**: To act as our querying engine
+5. **`Iceberg`**: To act as our storage method
 
 For simplicity services 1-5 of the above are installed and run in one container defined [here](./containers/airflow/Dockerfile).
 
