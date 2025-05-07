@@ -30,7 +30,7 @@ Go to [http:localhost:8080](http:localhost:8080) to see the Airflow UI. Username
 
 ## Test Text To SQL 
 
-Follow the steps on the notebook which will:
+Follow the steps on the [text_to_sql_iceberg.ipynb](https://github.com/paddelcourt/t2sql-lakehouse/blob/master/t2sql/text_to_sql_iceberg.ipynb) notebook which will:
 1. Query the Iceberg table with Duckdb connected to Minio S3
 2. Generate an [M-Schema](https://github.com/XGenerationLab/M-Schema) to be used as prompt template for Text to SQL 
 3. Inference with XGenerationLab/XiYanSQL-QwenCoder-7B-2504 model
