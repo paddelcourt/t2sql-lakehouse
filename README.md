@@ -39,10 +39,13 @@ Go to [http:localhost:8080](http:localhost:8080) to see the Airflow UI. Username
 
 ## Test Text To SQL 
 
+Please pip install requirements.txt to use the notebook.
+
 Follow the steps on the [text_to_sql_iceberg.ipynb](https://github.com/paddelcourt/t2sql-lakehouse/blob/master/t2sql/text_to_sql_iceberg.ipynb) notebook which will:
 1. Query the Iceberg table with Duckdb connected to Minio S3
 2. Generate an [M-Schema](https://github.com/XGenerationLab/M-Schema) to be used as prompt template for Text to SQL 
 3. Inference with XGenerationLab/XiYanSQL-QwenCoder-7B-2504 model
+
 
 
 ### Example of the interaction
@@ -65,10 +68,11 @@ This data engineering project, includes the following:
 1. **`Airflow`**: To schedule and orchestrate DAGs.
 2. **`Postgres`**: To store Airflow's details (which you can see via Airflow UI) and also has a schema to represent upstream databases.
 3. **`Spark`**: To ingest data and create Iceberg tables.
-4. **`DuckDB`**: To act as our querying engine
-5. **`Iceberg`**: To act as our storage method
+4. **`Iceberg`**: To act as our storage method
+5. **`DuckDB`**: To act as our querying engine
 
-For simplicity services 1-5 of the above are installed and run in one container defined [here](./containers/airflow/Dockerfile).
+For simplicity services 1-4 of the above are installed and run in one container defined [here](./containers/airflow/Dockerfile).
+
 
 
 
