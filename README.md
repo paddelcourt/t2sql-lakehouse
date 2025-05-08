@@ -24,7 +24,6 @@ cd t2sql-lakehouse
 make up
 sleep 30 # wait for Airflow to start
 make ci # run checks and tests
-uv pip install requirements.txt
 ```
 
 Go to [http:localhost:8080](http:localhost:8080) to see the Airflow UI. Username and password are both `airflow`.
@@ -39,7 +38,10 @@ Go to [http:localhost:8080](http:localhost:8080) to see the Airflow UI. Username
 
 ## Test Text To SQL 
 
-Please pip install requirements.txt to use the notebook.
+Please pip install requirements.txt to use the notebook. This repo uses the uv libary.
+```bash
+uv pip install requirements.txt
+```
 
 Follow the steps on the [text_to_sql_iceberg.ipynb](https://github.com/paddelcourt/t2sql-lakehouse/blob/master/t2sql/text_to_sql_iceberg.ipynb) notebook which will:
 1. Query the Iceberg table with Duckdb connected to Minio S3
